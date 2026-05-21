@@ -20,7 +20,23 @@ spec:
             - containerPort: 5000
           env:
             - name: MONGO_URI
-              value: "mongodb://mongo-service:27017/emailsdb"
+              # CHANGED: was "value: hardcoded-uri" now reading from Secret
+              valueFrom:
+                secretKeyRef:
+                  name: app-secret   # name of our secret.yaml
+                  key: MONGO_URI     # key inside the secret
+            - name: PORT
+              # CHANGED: was not here before, now reading from ConfigMap
+              valueFrom:
+                configMapKeyRef:
+                  name: app-config   # name of our configmap.yaml
+                  key: PORT          # key inside the configmap
+            - name: NODE_ENV
+              # CHANGED: was not here before, now reading from ConfigMap
+              valueFrom:
+                configMapKeyRef:
+                  name: app-config   # name of our configmap.yaml
+                  key: NODE_ENV      # key inside the configmap
 ---
 apiVersion: v1
 kind: Service

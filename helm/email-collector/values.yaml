@@ -1,0 +1,24 @@
+namespace: dev
+
+frontend:
+  image: raaghav99/raaghav_frontend:dev
+  replicas: 1
+  port: 80
+  nodePort: 30007
+
+backend:
+  image: raaghav99/raaghav_backend:latest
+  replicas: 1
+  port: 5000
+
+mongo:
+  image: mongo
+  port: 27017
+  storage: 1Gi
+
+configmap:
+  NODE_ENV: development
+  PORT: "5000"
+
+ingress:
+  host: ""

@@ -1,0 +1,17 @@
+namespace: dev
+
+frontend:
+  image: raaghav99/raaghav_frontend:dev
+  replicas: 1
+
+backend:
+  replicas: 1
+
+mongo:
+  storage: 1Gi
+
+configmap:
+  NODE_ENV: development
+
+ingress:
+  host: ""

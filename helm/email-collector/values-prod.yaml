@@ -1,0 +1,18 @@
+namespace: prod
+
+frontend:
+  image: raaghav99/raaghav_frontend:prod
+  replicas: 2
+  nodePort: 30008
+
+backend:
+  replicas: 2
+
+mongo:
+  storage: 2Gi
+
+configmap:
+  NODE_ENV: production
+
+ingress:
+  host: "prod.local"

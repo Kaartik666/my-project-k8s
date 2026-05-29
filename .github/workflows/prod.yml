@@ -1,0 +1,38 @@
+name: Prod Pipeline
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-deploy:
+    runs-on: self-hosted
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Login to DockerHub
+        run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin
+
+      - name: Build frontend prod image
+        working-directory: ./Aproject/frontend
+        run: |
+          echo "VITE_API_URL=http://prod.local:8080" > .env
+          docker build -t raaghav99/raaghav_frontend:prod .
+
+      - name: Build backend image
+        working-directory: ./Aproject/backend
+        run: docker build -t raaghav99/raaghav_backend:latest .
+
+      - name: Push images to DockerHub
+        run: |
+          docker push raaghav99/raaghav_frontend:prod
+          docker push raaghav99/raaghav_backend:latest
+
+      - name: Deploy to prod
+        run: |
+          helm upgrade email-collector-prod ~/my-project-k8s/helm/email-collector \
+            -f ~/my-project-k8s/helm/email-collector/values-prod.yaml \
+            -n prod

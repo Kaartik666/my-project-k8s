@@ -33,6 +33,7 @@ resource "kubernetes_namespace" "prod" {
   }
 }
 
+
 resource "helm_release" "dev" {
   name       = "email-collector-dev"
   namespace  = var.dev_namespace

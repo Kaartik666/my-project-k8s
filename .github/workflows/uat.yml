@@ -33,6 +33,6 @@ jobs:
 
       - name: Deploy to uat
         run: |
-          helm upgrade email-collector-uat ~/my-project-k8s/helm/email-collector \
+          helm upgrade --install email-collector-uat ~/my-project-k8s/helm/email-collector \
             -f ~/my-project-k8s/helm/email-collector/values-uat.yaml \
             -n uat

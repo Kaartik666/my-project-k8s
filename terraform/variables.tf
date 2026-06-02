@@ -4,12 +4,6 @@ variable "kubeconfig_path" {
   default     = "~/.kube/config"
 }
 
-variable "helm_chart_path" {
-  description = "Path to helm chart"
-  type        = string
-  default     = "../helm/email-collector"
-}
-
 variable "dev_namespace" {
   description = "Dev namespace name"
   type        = string
@@ -20,4 +14,10 @@ variable "prod_namespace" {
   description = "Prod namespace name"
   type        = string
   default     = "prod"
+}
+
+variable "uat_namespace" {
+  description = "UAT namespace name"
+  type        = string
+  default     = "uat"
 }

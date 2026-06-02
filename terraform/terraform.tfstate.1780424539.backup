@@ -1,0 +1,250 @@
+{
+  "version": 4,
+  "terraform_version": "1.15.5",
+  "serial": 13,
+  "lineage": "23602ec6-aed6-43a0-32f0-8ced07f4115b",
+  "outputs": {},
+  "resources": [
+    {
+      "mode": "managed",
+      "type": "helm_release",
+      "name": "dev",
+      "provider": "provider[\"registry.terraform.io/hashicorp/helm\"]",
+      "instances": [
+        {
+          "schema_version": 1,
+          "attributes": {
+            "atomic": false,
+            "chart": "../helm/email-collector",
+            "cleanup_on_fail": false,
+            "create_namespace": false,
+            "dependency_update": false,
+            "description": null,
+            "devel": null,
+            "disable_crd_hooks": false,
+            "disable_openapi_validation": false,
+            "disable_webhooks": false,
+            "force_update": false,
+            "id": "email-collector-dev",
+            "keyring": null,
+            "lint": false,
+            "manifest": null,
+            "max_history": 0,
+            "metadata": [
+              {
+                "app_version": "1.0.0",
+                "chart": "email-collector",
+                "first_deployed": 1779965199,
+                "last_deployed": 1780227450,
+                "name": "email-collector-dev",
+                "namespace": "dev",
+                "notes": "",
+                "revision": 6,
+                "values": "{\"backend\":{\"replicas\":1},\"configmap\":{\"NODE_ENV\":\"development\"},\"frontend\":{\"image\":\"raaghav99/raaghav_frontend:dev\",\"replicas\":1},\"ingress\":{\"host\":\"\"},\"mongo\":{\"storage\":\"1Gi\"},\"namespace\":\"dev\"}",
+                "version": "0.1.0"
+              }
+            ],
+            "name": "email-collector-dev",
+            "namespace": "dev",
+            "pass_credentials": false,
+            "postrender": [],
+            "recreate_pods": false,
+            "render_subchart_notes": true,
+            "replace": false,
+            "repository": null,
+            "repository_ca_file": null,
+            "repository_cert_file": null,
+            "repository_key_file": null,
+            "repository_password": null,
+            "repository_username": null,
+            "reset_values": false,
+            "reuse_values": false,
+            "set": [],
+            "set_list": [],
+            "set_sensitive": [],
+            "skip_crds": false,
+            "status": "deployed",
+            "timeout": 300,
+            "upgrade_install": null,
+            "values": [
+              "namespace: dev\n\nfrontend:\n  image: raaghav99/raaghav_frontend:dev\n  replicas: 1\n\nbackend:\n  replicas: 1\n\nmongo:\n  storage: 1Gi\n\nconfigmap:\n  NODE_ENV: development\n\ningress:\n  host: \"\"\n"
+            ],
+            "verify": false,
+            "version": "0.1.0",
+            "wait": true,
+            "wait_for_jobs": false
+          },
+          "sensitive_attributes": [
+            [
+              {
+                "type": "get_attr",
+                "value": "repository_password"
+              }
+            ]
+          ],
+          "identity_schema_version": 0,
+          "private": "eyJzY2hlbWFfdmVyc2lvbiI6IjEifQ==",
+          "dependencies": [
+            "kubernetes_namespace.dev"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "helm_release",
+      "name": "prod",
+      "provider": "provider[\"registry.terraform.io/hashicorp/helm\"]",
+      "instances": [
+        {
+          "schema_version": 1,
+          "attributes": {
+            "atomic": false,
+            "chart": "../helm/email-collector",
+            "cleanup_on_fail": false,
+            "create_namespace": false,
+            "dependency_update": false,
+            "description": null,
+            "devel": null,
+            "disable_crd_hooks": false,
+            "disable_openapi_validation": false,
+            "disable_webhooks": false,
+            "force_update": false,
+            "id": "email-collector-prod",
+            "keyring": null,
+            "lint": false,
+            "manifest": null,
+            "max_history": 0,
+            "metadata": [
+              {
+                "app_version": "1.0.0",
+                "chart": "email-collector",
+                "first_deployed": 1779965199,
+                "last_deployed": 1780422763,
+                "name": "email-collector-prod",
+                "namespace": "prod",
+                "notes": "",
+                "revision": 3,
+                "values": "{\"backend\":{\"replicas\":1},\"configmap\":{\"NODE_ENV\":\"production\"},\"frontend\":{\"image\":\"raaghav99/raaghav_frontend:prod\",\"nodePort\":30008,\"replicas\":1},\"ingress\":{\"host\":\"prod.local\"},\"mongo\":{\"storage\":\"2Gi\"},\"namespace\":\"prod\"}",
+                "version": "0.1.0"
+              }
+            ],
+            "name": "email-collector-prod",
+            "namespace": "prod",
+            "pass_credentials": false,
+            "postrender": [],
+            "recreate_pods": false,
+            "render_subchart_notes": true,
+            "replace": false,
+            "repository": null,
+            "repository_ca_file": null,
+            "repository_cert_file": null,
+            "repository_key_file": null,
+            "repository_password": null,
+            "repository_username": null,
+            "reset_values": false,
+            "reuse_values": false,
+            "set": [],
+            "set_list": [],
+            "set_sensitive": [],
+            "skip_crds": false,
+            "status": "deployed",
+            "timeout": 300,
+            "upgrade_install": null,
+            "values": [
+              "namespace: prod\n\nfrontend:\n  image: raaghav99/raaghav_frontend:prod\n  replicas: 2\n  nodePort: 30008\n\nbackend:\n  replicas: 2\n\nmongo:\n  storage: 2Gi\n\nconfigmap:\n  NODE_ENV: production\n\ningress:\n  host: \"prod.local\"\n"
+            ],
+            "verify": false,
+            "version": "0.1.0",
+            "wait": true,
+            "wait_for_jobs": false
+          },
+          "sensitive_attributes": [
+            [
+              {
+                "type": "get_attr",
+                "value": "repository_password"
+              }
+            ]
+          ],
+          "identity_schema_version": 0,
+          "private": "eyJzY2hlbWFfdmVyc2lvbiI6IjEifQ==",
+          "dependencies": [
+            "kubernetes_namespace.prod"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "kubernetes_namespace",
+      "name": "dev",
+      "provider": "provider[\"registry.terraform.io/hashicorp/kubernetes\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "id": "dev",
+            "metadata": [
+              {
+                "annotations": {},
+                "generate_name": "",
+                "generation": 0,
+                "labels": {},
+                "name": "dev",
+                "resource_version": "23465",
+                "uid": "d44bf6c9-e5fc-40f4-a741-83d89a96f199"
+              }
+            ],
+            "timeouts": null,
+            "wait_for_default_service_account": false
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 1,
+          "identity": {
+            "api_version": "v1",
+            "kind": "Namespace",
+            "name": "dev"
+          },
+          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiZGVsZXRlIjozMDAwMDAwMDAwMDB9fQ=="
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "kubernetes_namespace",
+      "name": "prod",
+      "provider": "provider[\"registry.terraform.io/hashicorp/kubernetes\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "id": "prod",
+            "metadata": [
+              {
+                "annotations": {},
+                "generate_name": "",
+                "generation": 0,
+                "labels": {},
+                "name": "prod",
+                "resource_version": "23464",
+                "uid": "148452a6-ade0-43c0-bb67-12fa790f0fda"
+              }
+            ],
+            "timeouts": null,
+            "wait_for_default_service_account": false
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 1,
+          "identity": {
+            "api_version": "v1",
+            "kind": "Namespace",
+            "name": "prod"
+          },
+          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiZGVsZXRlIjozMDAwMDAwMDAwMDB9fQ=="
+        }
+      ]
+    }
+  ],
+  "check_results": null
+}

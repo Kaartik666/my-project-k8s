@@ -2,7 +2,7 @@ namespace: dev
 
 frontend:
   image: raaghav99/raaghav_frontend:dev
-  replicas: 2
+  replicas: 1
 
 backend:
   replicas: 1

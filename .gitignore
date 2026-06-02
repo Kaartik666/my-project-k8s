@@ -5,6 +5,7 @@ node_modules/
 .terraform/
 terraform.tfstate
 terraform.tfstate.backup
+terraform.tfstate*
 actions-runner/
 Aproject/frontend/node_modules/
 Aproject/backend/node_modules/

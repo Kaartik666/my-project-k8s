@@ -1,0 +1,18 @@
+namespace: uat
+
+frontend:
+  image: raaghav99/raaghav_frontend:uat
+  replicas: 1
+  nodePort: 30009
+
+backend:
+  replicas: 1
+
+mongo:
+  storage: 1Gi
+
+configmap:
+  NODE_ENV: uat
+
+ingress:
+  host: "uat.local"

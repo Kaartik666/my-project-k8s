@@ -22,3 +22,7 @@ configmap:
 
 ingress:
   host: ""
+
+pdb:
+  enabled: false
+  minAvailable: 1

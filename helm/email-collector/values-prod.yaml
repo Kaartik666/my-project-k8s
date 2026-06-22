@@ -16,3 +16,7 @@ configmap:
 
 ingress:
   host: "prod.local"
+
+pdb:
+  enabled: true
+  minAvailable: 1
